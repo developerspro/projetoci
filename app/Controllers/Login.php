@@ -6,11 +6,10 @@ use App\Controllers\BaseController;
 
 class Login extends BaseController
 {
+    protected $texto;
     public function index()
     {
-       echo view('login/cabecalho');
-       echo view('login/formulario');
-       echo view('login/rodape');
+       echo view('login_form');
     }
 
     public function logar(){
@@ -21,9 +20,9 @@ class Login extends BaseController
         $usuarioModel->where('senha',$post['senha']);
         $resultado = $usuarioModel->find();
         if(empty($resultado)){
-            return redirect()->to('Login/index');
+            return redirect()->to('/Login/loginIncorreto');
         } else {
-            return redirect()->to('Principal/index');
+            return redirect()->to('/Principal/index');
         }
 
      } else { 
@@ -31,4 +30,12 @@ class Login extends BaseController
      }
 
     }
+
+    public function loginIncorreto(){
+      
+        $dados['msg']="Usuario e senha inválidos";
+        echo view('login_form',$dados);
+    }
+    
+  
 }

@@ -1,7 +1,12 @@
-<div class="container">
+<?php 
+$this->extend('layout\main.php');
+
+ $this->section('conteudo');?>
+ <div class="container">
     <div class="row">
+        
         <div class="col">
-            <?php
+        <?php
             if (!empty($msg)) {
             ?>
                 <div class="alert alert-danger" role="alert">
@@ -10,8 +15,6 @@
             <?php
             }
             ?>
-        </div>
-        <div class="col">
             <div class="card text-center">
                 <div class="card-header">
                     Login
@@ -47,3 +50,6 @@
     <div class="col"></div>
 </div>
 </div>
+<?php
+$this->endSection();
+?>
